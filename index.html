@@ -1,198 +1,183 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Homeplay</title>
   <style>
-    * {margin: 0; padding: 0; box-sizing: border-box;}
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
-      background: #000;
       color: #fff;
-      overflow-x: hidden;
-      position: relative;
+      background: #000;
     }
-
-    /* Marca d'água rotativa */
-    .background-slider {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -1;
-      overflow: hidden;
-    }
-    .background-slider img {
-      position: absolute;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: fade 20s infinite;
-      filter: brightness(30%);
-    }
-    .background-slider img:nth-child(1) { animation-delay: 0s; }
-    .background-slider img:nth-child(2) { animation-delay: 10s; }
-
-    @keyframes fade {
-      0%, 100% { opacity: 0; }
-      10%, 40% { opacity: 0.4; }
-      50%, 90% { opacity: 0; }
-    }
-
     header {
-      background: #111;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      padding: 10px 15px;
+      background: #111;
     }
-    .logo { display: flex; align-items: center; }
-    .logo img {
-      width: 40px; margin-right: 8px;
-    }
-    .logo span { font-size: 22px; font-weight: bold; color: #fff; }
-    .logo span.red { color: red; }
-    nav button {
+    header h1 { color: red; }
+    header button {
       margin-left: 10px;
-      padding: 8px 16px;
+      padding: 8px 14px;
       border: none;
-      border-radius: 6px;
-      font-weight: bold;
+      border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
-    .btn-watch { background: white; color: black; }
-    .btn-subscribe { background: red; color: white; }
+    .btn-watch { background: #fff; color: #000; }
+    .btn-sub { background: #e50914; color: #fff; }
 
-    /* Formulário teste */
-    .login-box {
+    /* Fundo rotativo */
+    .hero {
+      height: 300px;
+      background-size: cover;
+      background-position: center;
+      animation: slide 15s infinite;
+    }
+    @keyframes slide {
+      0%   { background-image: url('https://i.ibb.co/jgYWsWM/tom-jerry.jpg'); }
+      33%  { background-image: url('https://i.ibb.co/0jWgThD/velozes.jpg'); }
+      66%  { background-image: url('https://i.ibb.co/JB7L1zK/spiderman.jpg'); }
+      100% { background-image: url('https://i.ibb.co/jgYWsWM/tom-jerry.jpg'); }
+    }
+
+    .card {
       background: rgba(0,0,0,0.85);
-      margin: 20px;
+      margin: 15px;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 10px;
     }
-    .login-box h2 { margin-bottom: 12px; }
-    .login-box input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 12px;
-      border: none;
-      border-radius: 6px;
-    }
-    .login-box button {
-      width: 100%;
-      padding: 12px;
-      background: #0066ff;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+    .card h2 { margin-bottom: 10px; }
 
-    /* Planos */
-    .plans { padding: 20px; }
+    input, button {
+      width: 100%;
+      margin: 8px 0;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+    }
+    input { background: #222; color: #fff; }
+    button { background: #007bff; color: #fff; font-weight: bold; }
+
+    .plans {
+      margin: 20px;
+    }
     .plan {
       background: #111;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
     }
-    .plan h3 { margin-bottom: 8px; }
-    .plan p { margin-bottom: 12px; }
+    .plan h3 { margin-bottom: 5px; }
     .plan button {
-      margin: 6px;
-      padding: 10px 14px;
-      border-radius: 6px;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
+      width: 48%;
+      margin-top: 10px;
     }
-    .btn-pay { background: white; color: black; }
-    .btn-wa { background: transparent; border: 1px solid white; color: white; }
 
-    /* Flutuantes corrigidos */
-    .floating {
+    /* Ícones flutuantes */
+    .float-icons {
       position: fixed;
       bottom: 20px;
       right: 20px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      z-index: 15;
     }
-    .floating a {
-      width: 55px; height: 55px;
+    .float-icons a {
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       display: flex;
-      align-items: center; justify-content: center;
-      color: white;
-      font-size: 24px;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 26px;
       text-decoration: none;
     }
-    .whatsapp { background: #25d366; }
+    .whatsapp { background: #25D366; }
     .telegram { background: #0088cc; }
   </style>
 </head>
 <body>
-
-  <!-- Fundo rotativo -->
-  <div class="background-slider">
-    <img src="https://image.tmdb.org/t/p/original/9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg" alt="Filme 1">
-    <img src="https://image.tmdb.org/t/p/original/6KErczPBROQty7QoIsaa6wJYXZi.jpg" alt="Filme 2">
-  </div>
-
   <header>
-    <div class="logo">
-      <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Logo">
-      <span>Home<span class="red">play</span></span>
-    </div>
-    <nav>
+    <h1>Home<span style="color:red">play</span></h1>
+    <div>
       <button class="btn-watch">Assista agora</button>
-      <button class="btn-subscribe">Assine já</button>
-    </nav>
+      <button class="btn-sub">Assine já</button>
+    </div>
   </header>
 
-  <section class="login-box">
-    <h2>Login / Teste gratuito – 6 horas</h2>
-    <input type="text" placeholder="Nome completo">
-    <input type="text" placeholder="(44) 99928-5482">
-    <button>Ativar Teste 6h</button>
-  </section>
+  <div class="hero"></div>
 
-  <section class="plans">
+  <div class="card">
+    <h2>Login / Teste gratuito – 6 horas</h2>
+    <input type="text" id="nome" placeholder="Nome completo">
+    <input type="tel" id="telefone" placeholder="(xx) xxxxx-xxxx">
+    <button onclick="ativarTeste()">Ativar Teste 6h</button>
+    <p id="msg" style="margin-top:10px;color:yellow;"></p>
+  </div>
+
+  <div class="plans">
     <h2>Planos de Assinatura / Renovação</h2>
 
     <div class="plan">
       <h3>Plano Mensal</h3>
-      <p><strong>R$ 19,90</strong><br>1 mês • Renovação manual/automática</p>
-      <button class="btn-pay" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar (MercadoPago)</button>
-      <button class="btn-wa" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
+      <p><b>R$ 19,90</b> • 1 mês</p>
+      <button>Pagar (MercadoPago)</button>
+      <button>Assine já (WhatsApp)</button>
+      <img src="https://i.ibb.co/sF8dZbD/qrcode.png" width="120">
     </div>
 
-    <div class="plan">
+    <div class="plan" style="background:#001133;">
       <h3>Plano Semestral</h3>
-      <p><strong>R$ 100,00</strong><br>6 meses • Renovação automática</p>
-      <button class="btn-pay" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar (MercadoPago)</button>
-      <button class="btn-wa" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
+      <p><b>R$ 100,00</b> • 6 meses</p>
+      <button>Pagar (MercadoPago)</button>
+      <button>Assine já (WhatsApp)</button>
+      <img src="https://i.ibb.co/sF8dZbD/qrcode.png" width="120">
     </div>
 
-    <div class="plan">
+    <div class="plan" style="background:#332200;">
       <h3>Plano Anual</h3>
-      <p><strong>R$ 180,00</strong><br>12 meses • Renovação automática</p>
-      <button class="btn-pay" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar (MercadoPago)</button>
-      <button class="btn-wa" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
+      <p><b>R$ 180,00</b> • 12 meses</p>
+      <button>Pagar (MercadoPago)</button>
+      <button>Assine já (WhatsApp)</button>
+      <img src="https://i.ibb.co/sF8dZbD/qrcode.png" width="120">
     </div>
-  </section>
-
-  <!-- Botões flutuantes -->
-  <div class="floating">
-    <a href="https://wa.me/5544999285482" target="_blank" class="whatsapp">💬</a>
-    <a href="https://t.me/seuusuario" target="_blank" class="telegram">✈️</a>
   </div>
 
+  <!-- Ícones flutuantes -->
+  <div class="float-icons">
+    <a href="https://wa.me/5544999285482" class="whatsapp">W</a>
+    <a href="https://t.me/seucanal" class="telegram">T</a>
+  </div>
+
+  <script>
+    // Limitador de testes (2 por telefone)
+    function ativarTeste() {
+      let nome = document.getElementById("nome").value;
+      let telefone = document.getElementById("telefone").value;
+      let msg = document.getElementById("msg");
+
+      if (!nome || !telefone) {
+        msg.innerText = "Preencha todos os campos!";
+        return;
+      }
+
+      let testes = JSON.parse(localStorage.getItem("testes") || "{}");
+
+      if (!testes[telefone]) testes[telefone] = 0;
+
+      if (testes[telefone] >= 2) {
+        msg.innerText = "❌ Limite de 2 testes por cliente atingido!";
+      } else {
+        testes[telefone]++;
+        localStorage.setItem("testes", JSON.stringify(testes));
+        msg.innerText = "✅ Teste ativado com sucesso!";
+      }
+    }
+  </script>
 </body>
 </html>
