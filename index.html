@@ -1,80 +1,125 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Homeplay</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homeplay - Filmes, Séries e Esportes</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
+      background: url('https://i.ibb.co/j4RmmhV/movie-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
       color: #fff;
-      background: #000;
     }
     header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 10px 15px;
-      background: #111;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 10px 20px;
     }
-    header h1 { color: red; }
-    header button {
+    header .logo {
+      display: flex;
+      align-items: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+    header .logo span { color: red; }
+    header nav a {
       margin-left: 10px;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 6px;
       font-weight: bold;
     }
-    .btn-watch { background: #fff; color: #000; }
-    .btn-sub { background: #e50914; color: #fff; }
+    .btn-watch { background: white; color: black; }
+    .btn-subscribe { background: red; color: white; }
 
-    /* Fundo rotativo */
-    .hero {
-      height: 300px;
-      background-size: cover;
-      background-position: center;
-      animation: slide 15s infinite;
-    }
-    @keyframes slide {
-      0%   { background-image: url('https://i.ibb.co/jgYWsWM/tom-jerry.jpg'); }
-      33%  { background-image: url('https://i.ibb.co/0jWgThD/velozes.jpg'); }
-      66%  { background-image: url('https://i.ibb.co/JB7L1zK/spiderman.jpg'); }
-      100% { background-image: url('https://i.ibb.co/jgYWsWM/tom-jerry.jpg'); }
-    }
-
-    .card {
-      background: rgba(0,0,0,0.85);
-      margin: 15px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-    .card h2 { margin-bottom: 10px; }
-
-    input, button {
+    /* Banner rotativo */
+    .carousel {
+      position: relative;
+      overflow: hidden;
       width: 100%;
-      margin: 8px 0;
-      padding: 12px;
+      height: 250px;
+    }
+    .carousel img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: none;
+    }
+    .carousel img.active { display: block; }
+
+    /* Seção teste */
+    .teste {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      text-align: center;
+    }
+    .teste h2 { margin-bottom: 15px; }
+    .teste input {
+      width: 90%;
+      padding: 10px;
+      margin: 5px 0;
       border-radius: 6px;
       border: none;
     }
-    input { background: #222; color: #fff; }
-    button { background: #007bff; color: #fff; font-weight: bold; }
+    .teste button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 90%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-    .plans {
-      margin: 20px;
+    /* Planos */
+    .planos {
+      padding: 20px;
     }
-    .plan {
-      background: #111;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
+    .planos h2 {
+      text-align: center;
+      margin-bottom: 20px;
     }
-    .plan h3 { margin-bottom: 5px; }
-    .plan button {
-      width: 48%;
+    .plano {
+      background: rgba(0, 0, 0, 0.85);
+      margin: 15px auto;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 400px;
+      text-align: center;
+    }
+    .plano h3 { margin-bottom: 10px; }
+    .plano .preco {
+      font-size: 26px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .plano p { margin-bottom: 15px; }
+    .plano .botoes {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 10px;
+    }
+    .plano .botoes a {
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #fff;
+      color: #fff;
+      font-size: 14px;
+      flex: 1;
+      margin: 0 5px;
+    }
+    .plano .botoes a:first-child { background: white; color: black; }
+    .plano img.qr {
       margin-top: 10px;
+      width: 120px;
+      height: 120px;
     }
 
     /* Ícones flutuantes */
@@ -84,100 +129,102 @@
       right: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
     .float-icons a {
       width: 55px;
       height: 55px;
       border-radius: 50%;
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: #fff;
-      font-size: 26px;
+      align-items: center;
+      color: white;
+      font-size: 24px;
       text-decoration: none;
     }
-    .whatsapp { background: #25D366; }
+    .whatsapp { background: #25d366; }
     .telegram { background: #0088cc; }
   </style>
 </head>
 <body>
+  <!-- Cabeçalho -->
   <header>
-    <h1>Home<span style="color:red">play</span></h1>
-    <div>
-      <button class="btn-watch">Assista agora</button>
-      <button class="btn-sub">Assine já</button>
-    </div>
+    <div class="logo">🏠Home<span>play</span></div>
+    <nav>
+      <a href="#" class="btn-watch">Assista agora</a>
+      <a href="#" class="btn-subscribe">Assine já</a>
+    </nav>
   </header>
 
-  <div class="hero"></div>
-
-  <div class="card">
-    <h2>Login / Teste gratuito – 6 horas</h2>
-    <input type="text" id="nome" placeholder="Nome completo">
-    <input type="tel" id="telefone" placeholder="(xx) xxxxx-xxxx">
-    <button onclick="ativarTeste()">Ativar Teste 6h</button>
-    <p id="msg" style="margin-top:10px;color:yellow;"></p>
+  <!-- Banner rotativo -->
+  <div class="carousel">
+    <img src="https://i.ibb.co/4pMqkqs/tomjerry.jpg" class="active" alt="Tom e Jerry">
+    <img src="https://i.ibb.co/0mLfZ2w/avengers.jpg" alt="Avengers">
+    <img src="https://i.ibb.co/3vNRhVN/johnwick.jpg" alt="John Wick">
   </div>
 
-  <div class="plans">
+  <!-- Teste grátis -->
+  <section class="teste">
+    <h2>Login / Teste gratuito — <strong>6 horas</strong></h2>
+    <input type="text" placeholder="Nome completo">
+    <input type="text" placeholder="(44) 99928-5482">
+    <button>Ativar Teste 6h</button>
+    <p style="margin-top:10px; font-size:13px; color:#bbb;">Máximo de 2 testes por cliente</p>
+  </section>
+
+  <!-- Planos -->
+  <section class="planos">
     <h2>Planos de Assinatura / Renovação</h2>
 
-    <div class="plan">
+    <div class="plano">
       <h3>Plano Mensal</h3>
-      <p><b>R$ 19,90</b> • 1 mês</p>
-      <button>Pagar (MercadoPago)</button>
-      <button>Assine já (WhatsApp)</button>
-      <img src="https://i.ibb.co/sF8dZbD/qrcode.png" width="120">
+      <div class="preco">R$ 19,90</div>
+      <p>1 mês • Renovação manual/automática</p>
+      <div class="botoes">
+        <a href="https://mpago.la/25CCQgV" target="_blank">Pagar (MercadoPago)</a>
+        <a href="https://wa.me/5544999285482" target="_blank">Assine já (WhatsApp)</a>
+      </div>
+      <img class="qr" src="https://i.ibb.co/0ZLwK8x/qrmensal.png" alt="QR Mensal">
     </div>
 
-    <div class="plan" style="background:#001133;">
+    <div class="plano">
       <h3>Plano Semestral</h3>
-      <p><b>R$ 100,00</b> • 6 meses</p>
-      <button>Pagar (MercadoPago)</button>
-      <button>Assine já (WhatsApp)</button>
-      <img src="https://i.ibb.co/sF8dZbD/qrcode.png" width="120">
+      <div class="preco">R$ 100,00</div>
+      <p>6 meses • Renovação automática</p>
+      <div class="botoes">
+        <a href="https://mpago.la/2HKEXeN" target="_blank">Pagar (MercadoPago)</a>
+        <a href="https://wa.me/5544999285482" target="_blank">Assine já (WhatsApp)</a>
+      </div>
+      <img class="qr" src="https://i.ibb.co/DzQGLHk/qrsemestral.png" alt="QR Semestral">
     </div>
 
-    <div class="plan" style="background:#332200;">
+    <div class="plano">
       <h3>Plano Anual</h3>
-      <p><b>R$ 180,00</b> • 12 meses</p>
-      <button>Pagar (MercadoPago)</button>
-      <button>Assine já (WhatsApp)</button>
-      <img src="https://i.ibb.co/sF8dZbD/qrcode.png" width="120">
+      <div class="preco">R$ 180,00</div>
+      <p>12 meses • Renovação automática</p>
+      <div class="botoes">
+        <a href="https://mpago.la/1zaQU6s" target="_blank">Pagar (MercadoPago)</a>
+        <a href="https://wa.me/5544999285482" target="_blank">Assine já (WhatsApp)</a>
+      </div>
+      <img class="qr" src="https://i.ibb.co/5M9y8DJ/qranual.png" alt="QR Anual">
     </div>
-  </div>
+  </section>
 
   <!-- Ícones flutuantes -->
   <div class="float-icons">
-    <a href="https://wa.me/5544999285482" class="whatsapp">W</a>
-    <a href="https://t.me/seucanal" class="telegram">T</a>
+    <a href="https://wa.me/5544999285482" class="whatsapp">📱</a>
+    <a href="https://t.me/seucanal" class="telegram">✈️</a>
   </div>
 
   <script>
-    // Limitador de testes (2 por telefone)
-    function ativarTeste() {
-      let nome = document.getElementById("nome").value;
-      let telefone = document.getElementById("telefone").value;
-      let msg = document.getElementById("msg");
-
-      if (!nome || !telefone) {
-        msg.innerText = "Preencha todos os campos!";
-        return;
-      }
-
-      let testes = JSON.parse(localStorage.getItem("testes") || "{}");
-
-      if (!testes[telefone]) testes[telefone] = 0;
-
-      if (testes[telefone] >= 2) {
-        msg.innerText = "❌ Limite de 2 testes por cliente atingido!";
-      } else {
-        testes[telefone]++;
-        localStorage.setItem("testes", JSON.stringify(testes));
-        msg.innerText = "✅ Teste ativado com sucesso!";
-      }
-    }
+    // Script rotativo do banner
+    let index = 0;
+    const imagens = document.querySelectorAll('.carousel img');
+    setInterval(() => {
+      imagens[index].classList.remove('active');
+      index = (index + 1) % imagens.length;
+      imagens[index].classList.add('active');
+    }, 4000);
   </script>
 </body>
 </html>
