@@ -8,109 +8,95 @@
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: #000; color: #fff; text-align: center; overflow-x: hidden; }
 
-    /* Banner rotativo principal */
-    .banner {
-      position: relative;
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
-    }
-    .banner img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: slide 20s infinite;
-    }
-    .banner img:nth-child(1) { animation-delay: 0s; }
-    .banner img:nth-child(2) { animation-delay: 5s; }
-    .banner img:nth-child(3) { animation-delay: 10s; }
-    .banner img:nth-child(4) { animation-delay: 15s; }
-    @keyframes slide {
-      0%, 20% { opacity: 1; }
-      25%, 100% { opacity: 0; }
-    }
-
     /* Cabeçalho */
     header {
-      background: rgba(0, 0, 0, 0.85);
-      padding: 12px;
+      background: rgba(0,0,0,0.85);
+      padding: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
     header h1 {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: bold;
       color: red;
       text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
     }
     header h1 span { color: blue; }
+    header nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     header nav button {
-      margin-left: 10px;
       padding: 8px 16px;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       font-weight: bold;
       cursor: pointer;
     }
     .watch-btn { background: #fff; color: #000; }
     .subscribe-btn { background: red; color: #fff; }
 
-    /* Formulário de teste */
+    /* Banner rotativo */
+    .banner { width: 100%; max-height: 400px; overflow: hidden; position: relative; }
+    .banner .slides { display: flex; width: 400%; animation: slide 20s infinite; }
+    .banner img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    @keyframes slide {
+      0%, 20% { transform: translateX(0); }
+      25%, 45% { transform: translateX(-100%); }
+      50%, 70% { transform: translateX(-200%); }
+      75%, 100% { transform: translateX(-300%); }
+    }
+
+    /* Login / Teste */
     .login {
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       padding: 20px;
       margin: 20px auto;
       border-radius: 10px;
-      max-width: 400px;
+      max-width: 500px;
     }
     .login input {
-      display: block;
       width: 90%;
       margin: 10px auto;
-      padding: 10px;
+      padding: 12px;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
     }
     .login button {
       background: blue;
       color: #fff;
       padding: 12px 25px;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
     }
-    #mensagem { margin-top: 10px; color: yellow; }
 
     /* Planos */
     .plans { padding: 20px; }
+    .plans h2 { margin-bottom: 15px; }
     .plan {
-      margin: 20px auto;
+      background: rgba(0,0,0,0.85);
+      margin: 15px auto;
       padding: 20px;
-      border-radius: 12px;
-      max-width: 380px;
-      color: #fff;
+      border-radius: 10px;
+      max-width: 350px;
     }
-    .plan h3 { margin-bottom: 8px; font-size: 20px; }
+    .plan h3 { margin-bottom: 10px; }
     .plan p { margin: 5px 0; }
     .plan button {
-      margin: 8px 5px;
-      padding: 10px 18px;
+      margin: 8px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
     }
-    .pay-btn { background: #fff; color: #000; }
-    .whatsapp-btn { background: green; color: #fff; }
-    .plan img { margin-top: 12px; width: 140px; height: 140px; }
-
-    /* Cores dos planos */
-    .mensal { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-    .semestral { background: linear-gradient(135deg, #283e51, #485563); }
-    .anual { background: linear-gradient(135deg, #42275a, #734b6d); }
+    .pay-btn { background: white; color: black; }
+    .whatsapp-btn { background: green; color: white; }
+    .plan img { width: 120px; margin-top: 10px; }
 
     /* Botões flutuantes */
     .floating {
@@ -119,35 +105,42 @@
       right: 20px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      z-index: 100;
+      gap: 10px;
     }
     .floating a img {
-      width: 55px;
-      height: 55px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
-      background: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      header { flex-direction: column; text-align: center; }
+      .banner img { height: 250px; }
+      .login, .plan { width: 95%; }
+      .floating { right: 10px; bottom: 10px; }
+      .floating a img { width: 45px; height: 45px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- Cabeçalho -->
   <header>
     <h1>Home<span>play</span></h1>
     <nav>
-      <button class="watch-btn">Assista agora</button>
-      <button class="subscribe-btn">Assine já</button>
+      <button class="watch-btn" onclick="window.open('http://starweb.webplayer.one','_blank')">Assista agora</button>
+      <button class="subscribe-btn" onclick="document.querySelector('.plans').scrollIntoView({behavior:'smooth'})">Assine já</button>
     </nav>
   </header>
 
-  <!-- Banner Rotativo -->
+  <!-- Banner rotativo -->
   <div class="banner">
-    <img src="https://image.tmdb.org/t/p/original/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg">
-    <img src="https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg">
-    <img src="https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg">
-    <img src="https://image.tmdb.org/t/p/original/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg">
+    <div class="slides">
+      <img src="https://image.tmdb.org/t/p/original/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg" alt="Banner 1">
+      <img src="https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Banner 2">
+      <img src="https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg" alt="Banner 3">
+      <img src="https://image.tmdb.org/t/p/original/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg" alt="Banner 4">
+    </div>
   </div>
 
   <!-- Login / Teste -->
@@ -156,38 +149,38 @@
     <input type="text" id="nome" placeholder="Nome completo" required>
     <input type="tel" id="telefone" placeholder="(44) 99928-5482" required>
     <button onclick="ativarTeste()">Ativar Teste 6h</button>
-    <p id="mensagem"></p>
+    <p id="mensagem" style="margin-top:10px;color:yellow;"></p>
   </section>
 
   <!-- Planos -->
   <section class="plans">
     <h2>Planos de Assinatura / Renovação</h2>
 
-    <div class="plan mensal">
+    <div class="plan">
       <h3>Plano Mensal</h3>
       <p><strong>R$ 19,90</strong></p>
       <p>1 mês • Renovação manual/automática</p>
       <button class="pay-btn" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar (MercadoPago)</button>
-      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
-      <img src="qr-mensal.png" alt="QR Code Plano Mensal">
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/25CCQgV" alt="QR Mensal">
     </div>
 
-    <div class="plan semestral">
+    <div class="plan">
       <h3>Plano Semestral</h3>
       <p><strong>R$ 100,00</strong></p>
       <p>6 meses • Renovação automática</p>
       <button class="pay-btn" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar (MercadoPago)</button>
-      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
-      <img src="qr-semestral.png" alt="QR Code Plano Semestral">
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/2HKEXeN" alt="QR Semestral">
     </div>
 
-    <div class="plan anual">
+    <div class="plan">
       <h3>Plano Anual</h3>
       <p><strong>R$ 180,00</strong></p>
       <p>12 meses • Renovação automática</p>
       <button class="pay-btn" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar (MercadoPago)</button>
-      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
-      <img src="qr-anual.png" alt="QR Code Plano Anual">
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/1zaQU6s" alt="QR Anual">
     </div>
   </section>
 
@@ -196,14 +189,18 @@
     <a href="https://wa.me/5544999285482" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
-    <a href="https://t.me/seuTelegram" target="_blank">
+    <a href="https://t.me/homeplaytv" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
     </a>
   </div>
 
   <script>
     function ativarTeste() {
-      const telefone = document.getElementById("telefone").value;
+      const telefone = document.getElementById("telefone").value.trim();
+      if (!telefone) {
+        document.getElementById("mensagem").innerText = "Digite um número válido.";
+        return;
+      }
       let testes = localStorage.getItem(telefone) || 0;
       testes = parseInt(testes);
       if (testes >= 2) {
