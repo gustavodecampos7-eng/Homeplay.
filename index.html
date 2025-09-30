@@ -36,13 +36,13 @@
     .subscribe-btn { background: red; color: #fff; }
 
     /* Banner rotativo */
-    .banner { width: 100%; max-height: 350px; overflow: hidden; position: relative; }
+    .banner { width: 100%; max-height: 250px; overflow: hidden; position: relative; }
     .banner .slides { display: flex; width: 400%; animation: slide 20s infinite; }
     .banner img {
       width: 100%;
-      height: 350px;
-      object-fit: cover;   /* garante enquadramento correto */
-      object-position: center;
+      height: 250px;
+      object-fit: contain; /* mantém proporção sem cortar */
+      background: #000;    /* fundo preto para evitar bordas brancas */
       flex-shrink: 0;
     }
     @keyframes slide {
@@ -94,15 +94,16 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
     }
-    .pay-btn { background: white; color: black; }
-    .whatsapp-btn { background: green; color: white; }
+    .pay-btn { background: rgba(255,255,255,0.9); color: black; }
+    .whatsapp-btn { background: rgba(0,128,0,0.85); color: white; }
     .plan img { width: 120px; margin-top: 10px; }
 
-    /* Cores específicas */
-    .mensal { background: linear-gradient(135deg, red, darkred); }
-    .semestral { background: linear-gradient(135deg, blue, darkblue); }
-    .anual { background: linear-gradient(135deg, black, #111); border: 2px solid red; }
+    /* Cores suaves */
+    .mensal { background: linear-gradient(135deg, rgba(255,0,0,0.7), rgba(139,0,0,0.7)); }
+    .semestral { background: linear-gradient(135deg, rgba(0,0,255,0.7), rgba(0,0,139,0.7)); }
+    .anual { background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(30,30,30,0.85)); border: 1px solid rgba(255,0,0,0.6); }
 
     /* Botões flutuantes */
     .floating {
@@ -123,7 +124,8 @@
     /* Responsividade */
     @media (max-width: 768px) {
       header { flex-direction: column; text-align: center; }
-      .banner img { height: 200px; }
+      .banner { max-height: 180px; }
+      .banner img { height: 180px; }
       .login, .plan { width: 95%; }
       .floating { right: 10px; bottom: 10px; }
       .floating a img { width: 45px; height: 45px; }
@@ -142,10 +144,10 @@
   <!-- Banner rotativo -->
   <div class="banner">
     <div class="slides">
-      <img src="https://image.tmdb.org/t/p/original/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg" alt="Banner 1">
-      <img src="https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Banner 2">
-      <img src="https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg" alt="Banner 3">
-      <img src="https://image.tmdb.org/t/p/original/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg" alt="Banner 4">
+      <img src="https://image.tmdb.org/t/p/w780/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg" alt="Banner 1">
+      <img src="https://image.tmdb.org/t/p/w780/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Banner 2">
+      <img src="https://image.tmdb.org/t/p/w780/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg" alt="Banner 3">
+      <img src="https://image.tmdb.org/t/p/w780/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg" alt="Banner 4">
     </div>
   </div>
 
@@ -166,8 +168,8 @@
       <h3>Plano Mensal</h3>
       <p><strong>R$ 19,90</strong></p>
       <p>1 mês • Renovação manual/automática</p>
-      <button class="pay-btn" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar (MercadoPago)</button>
       <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
+      <button class="pay-btn" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar (MercadoPago)</button>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/25CCQgV" alt="QR Mensal">
     </div>
 
@@ -175,8 +177,8 @@
       <h3>Plano Semestral</h3>
       <p><strong>R$ 100,00</strong></p>
       <p>6 meses • Renovação automática</p>
-      <button class="pay-btn" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar (MercadoPago)</button>
       <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
+      <button class="pay-btn" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar (MercadoPago)</button>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/2HKEXeN" alt="QR Semestral">
     </div>
 
@@ -184,8 +186,8 @@
       <h3>Plano Anual</h3>
       <p><strong>R$ 180,00</strong></p>
       <p>12 meses • Renovação automática</p>
-      <button class="pay-btn" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar (MercadoPago)</button>
       <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
+      <button class="pay-btn" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar (MercadoPago)</button>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/1zaQU6s" alt="QR Anual">
     </div>
   </section>
