@@ -3,81 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homeplay TV</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Homeplay</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black text-white">
 
   <!-- Cabeçalho -->
-  <header class="header">
-    <!-- Logo com fallback: tenta logo.png e se não encontrar usa logo.jpg -->
-    <picture>
-      <source srcset="./assets/logo.png" type="image/png">
-      <source srcset="./assets/logo.jpg" type="image/jpeg">
-      <img src="./assets/logo.png" alt="Logo Homeplay TV" class="logo">
-    </picture>
-    <a href="#planos" class="btn-assine">ASSINE AGORA</a>
+  <header class="flex items-center justify-between p-6">
+    <h1 class="text-2xl font-bold text-red-500">Home<span class="text-blue-500">play</span></h1>
+    <a href="https://wa.me/5544999285482" class="bg-red-600 px-4 py-2 rounded">Assine já</a>
   </header>
 
-  <!-- Banner principal -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Homeplay TV</h1>
-      <p>Planos a partir de <strong>R$19,90/mês</strong></p>
-      <a href="#planos" class="btn-assine">ASSINE AGORA</a>
-    </div>
-    <div class="hero-banners">
-      <img src="./assets/banner1.jpg" alt="Banner 1">
-      <img src="./assets/banner2.jpg" alt="Banner 2">
-      <img src="./assets/banner3.jpg" alt="Banner 3">
-    </div>
-  </section>
+  <!-- Banner rotativo simples -->
+  <div class="relative w-full h-64 overflow-hidden">
+    <img id="banner" src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=1600&q=80" 
+         class="w-full h-full object-cover transition-opacity duration-700">
+  </div>
 
   <!-- Planos -->
-  <section id="planos" class="planos">
-    <h2>Escolha seu plano</h2>
-    <div class="planos-container">
-
-      <div class="plano">
-        <h3>Mensal</h3>
-        <p><strong>R$19,90</strong></p>
-        <img src="./assets/qr_mensal.png" alt="QR Code Mensal">
+  <section class="p-6">
+    <h2 class="text-xl font-bold mb-4">Planos</h2>
+    <div class="grid gap-6 sm:grid-cols-3">
+      <div class="bg-neutral-900 p-4 rounded">
+        <h3>1 mês</h3>
+        <p>R$ 19,90</p>
+        <a href="https://wa.me/5544999285482" class="mt-2 inline-block bg-red-600 px-3 py-1 rounded">Assine</a>
       </div>
-
-      <div class="plano">
-        <h3>Semestral</h3>
-        <p><strong>R$100,00</strong></p>
-        <img src="./assets/qr_semestral.png" alt="QR Code Semestral">
+      <div class="bg-neutral-900 p-4 rounded">
+        <h3>6 meses</h3>
+        <p>R$ 100,00</p>
+        <a href="https://wa.me/5544999285482" class="mt-2 inline-block bg-red-600 px-3 py-1 rounded">Assine</a>
       </div>
-
-      <div class="plano">
-        <h3>Anual</h3>
-        <p><strong>R$180,00</strong></p>
-        <img src="./assets/qr_anual.png" alt="QR Code Anual">
+      <div class="bg-neutral-900 p-4 rounded">
+        <h3>12 meses</h3>
+        <p>R$ 180,00</p>
+        <a href="https://wa.me/5544999285482" class="mt-2 inline-block bg-red-600 px-3 py-1 rounded">Assine</a>
       </div>
-
     </div>
   </section>
 
-  <!-- Contato -->
-  <section id="contato" class="contato">
-    <h2>Fale Conosco</h2>
-    <div class="contato-links">
-      <a href="https://wa.me/5544999285482" target="_blank">
-        <img src="./assets/whatsapp.png" alt="WhatsApp">
-        WhatsApp
-      </a>
-      <a href="https://t.me/homeplaytv" target="_blank">
-        <img src="./assets/telegram.png" alt="Telegram">
-        Telegram
-      </a>
+  <!-- Assista aqui -->
+  <section class="p-6">
+    <h2 class="text-xl font-bold mb-4">Assista aqui</h2>
+    <div class="flex gap-4">
+      <a href="#" class="bg-red-600 p-4 rounded">Filmes</a>
+      <a href="#" class="bg-blue-600 p-4 rounded">Séries</a>
+      <a href="#" class="bg-red-600 p-4 rounded">Esportes</a>
     </div>
   </section>
 
   <!-- Rodapé -->
-  <footer class="footer">
-    <p>Obrigado por assistir!</p>
+  <footer class="p-6 text-center text-gray-400">
+    © 2025 Homeplay
   </footer>
 
+  <!-- Script para banner rotativo -->
+  <script>
+    const imagens = [
+      "https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=1600&q=80",
+      "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=1600&q=80",
+      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1600&q=80"
+    ];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % imagens.length;
+      document.getElementById("banner").src = imagens[idx];
+    }, 3000);
+  </script>
 </body>
-</html>
+  </html>
