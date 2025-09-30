@@ -36,12 +36,13 @@
     .subscribe-btn { background: red; color: #fff; }
 
     /* Banner rotativo */
-    .banner { width: 100%; max-height: 400px; overflow: hidden; position: relative; }
+    .banner { width: 100%; max-height: 350px; overflow: hidden; position: relative; }
     .banner .slides { display: flex; width: 400%; animation: slide 20s infinite; }
     .banner img {
       width: 100%;
-      height: 400px;
-      object-fit: cover;
+      height: 350px;
+      object-fit: cover;   /* garante enquadramento correto */
+      object-position: center;
       flex-shrink: 0;
     }
     @keyframes slide {
@@ -79,13 +80,13 @@
     .plans { padding: 20px; }
     .plans h2 { margin-bottom: 15px; }
     .plan {
-      background: rgba(0,0,0,0.85);
       margin: 15px auto;
       padding: 20px;
       border-radius: 10px;
       max-width: 350px;
+      color: #fff;
     }
-    .plan h3 { margin-bottom: 10px; }
+    .plan h3 { margin-bottom: 10px; font-size: 20px; }
     .plan p { margin: 5px 0; }
     .plan button {
       margin: 8px;
@@ -97,6 +98,11 @@
     .pay-btn { background: white; color: black; }
     .whatsapp-btn { background: green; color: white; }
     .plan img { width: 120px; margin-top: 10px; }
+
+    /* Cores específicas */
+    .mensal { background: linear-gradient(135deg, red, darkred); }
+    .semestral { background: linear-gradient(135deg, blue, darkblue); }
+    .anual { background: linear-gradient(135deg, black, #111); border: 2px solid red; }
 
     /* Botões flutuantes */
     .floating {
@@ -117,7 +123,7 @@
     /* Responsividade */
     @media (max-width: 768px) {
       header { flex-direction: column; text-align: center; }
-      .banner img { height: 250px; }
+      .banner img { height: 200px; }
       .login, .plan { width: 95%; }
       .floating { right: 10px; bottom: 10px; }
       .floating a img { width: 45px; height: 45px; }
@@ -156,7 +162,7 @@
   <section class="plans">
     <h2>Planos de Assinatura / Renovação</h2>
 
-    <div class="plan">
+    <div class="plan mensal">
       <h3>Plano Mensal</h3>
       <p><strong>R$ 19,90</strong></p>
       <p>1 mês • Renovação manual/automática</p>
@@ -165,7 +171,7 @@
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/25CCQgV" alt="QR Mensal">
     </div>
 
-    <div class="plan">
+    <div class="plan semestral">
       <h3>Plano Semestral</h3>
       <p><strong>R$ 100,00</strong></p>
       <p>6 meses • Renovação automática</p>
@@ -174,7 +180,7 @@
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/2HKEXeN" alt="QR Semestral">
     </div>
 
-    <div class="plan">
+    <div class="plan anual">
       <h3>Plano Anual</h3>
       <p><strong>R$ 180,00</strong></p>
       <p>12 meses • Renovação automática</p>
