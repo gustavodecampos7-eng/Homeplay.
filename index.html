@@ -4,144 +4,128 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homeplay</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-    header {
-      background: #111;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      color: red;
-    }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #0af;
-    }
-    .banner {
-      position: relative;
-      height: 300px;
-      overflow: hidden;
-    }
-    .banner img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      position: absolute;
-      opacity: 0;
-      transition: opacity 1s;
-    }
-    .banner img.active {
-      opacity: 1;
-    }
-    .section {
+    body { background: #000; color: #fff; font-family: Arial, sans-serif; }
+    .navbar { background: #111; }
+    .navbar-brand { font-weight: bold; color: #fff; }
+    .btn-assine { background: #e50914; color: #fff; font-weight: bold; }
+    .carousel-item img { height: 400px; object-fit: cover; }
+    .planos { padding: 40px 0; }
+    .banner-plano {
+      background: linear-gradient(to right, #e50914, #b00610);
       padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      color: #fff;
       text-align: center;
     }
-    .form-container input {
-      display: block;
-      margin: 10px auto;
-      padding: 10px;
-      width: 250px;
+    .banner-plano h4 { font-size: 1.5rem; font-weight: bold; }
+    .banner-plano p { margin: 5px 0; }
+    .banner-plano .preco { font-size: 2rem; font-weight: bold; }
+    footer { background: #111; padding: 20px; text-align: center; }
+    .float-whatsapp, .float-telegram {
+      position: fixed; width: 60px; height: 60px;
+      bottom: 20px; border-radius: 50%;
+      color: #fff; text-align: center; font-size: 30px;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 100;
     }
-    .btn {
-      background: red;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-    }
-    .plans {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .plan {
-      background: #111;
-      padding: 20px;
-      border-radius: 12px;
-      width: 250px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.2);
-    }
-    .plan h3 {
-      margin-bottom: 10px;
-      color: #0af;
-    }
-    .plan img {
-      width: 100%;
-      margin: 10px 0;
-      border-radius: 8px;
-    }
-    .floating-icons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .floating-icons a {
-      background: #0af;
-      padding: 12px;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 20px;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
+    .float-whatsapp { background: #25d366; right: 90px; }
+    .float-telegram { background: #0088cc; right: 20px; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Homeplay</h1>
-    <nav>
-      <a href="#login">Login</a>
-      <a href="#planos">Planos</a>
-      <a href="#assista">Assista Aqui</a>
-    </nav>
-  </header>
 
-  <!-- Banner rotativo -->
-  <div class="banner">
-    <img src="https://i.ibb.co/3rJfM8w/movies.jpg" class="active" alt="Filmes">
-    <img src="https://i.ibb.co/JrkSkWN/series.jpg" alt="Séries">
-    <img src="https://i.ibb.co/DVytYvT/sports.jpg" alt="Esportes">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-dark px-3">
+    <a class="navbar-brand" href="#"><i class="fa-solid fa-house"></i> Homeplay</a>
+    <div>
+      <a class="btn btn-outline-light me-2" href="http://starweb.webplayer.one" target="_blank">Assista agora</a>
+      <a class="btn btn-assine" href="https://wa.me/5544999285482" target="_blank">Assine já</a>
+    </div>
+  </nav>
+
+  <!-- BANNER ROTATIVO -->
+  <div id="carouselHome" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://image.tmdb.org/t/p/w1280/egoyMDLqCxzjnSrWOz50uLlJWmD.jpg" class="d-block w-100" alt="Filme 1">
+      </div>
+      <div class="carousel-item">
+        <img src="https://image.tmdb.org/t/p/w1280/2RSirqZG949GuRwN38MYCIGG4Od.jpg" class="d-block w-100" alt="Filme 2">
+      </div>
+      <div class="carousel-item">
+        <img src="https://image.tmdb.org/t/p/w1280/rHzoz94bRfyfNLjiIB26Wt5KDHE.jpg" class="d-block w-100" alt="Esporte">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
   </div>
 
-  <!-- Login -->
-  <section id="login" class="section">
-    <h2>Login</h2>
-    <div class="form-container">
-      <input type="text" id="nome" placeholder="Seu Nome">
-      <input type="tel" id="telefone" placeholder="Número de Telefone">
-      <button class="btn" onclick="testeGratis()">Teste gratuito 6 horas</button>
-    </div>
-  </section>
+  <!-- LOGIN / TESTE GRÁTIS -->
+  <div class="container text-center py-5">
+    <h3>Login / Teste gratuito 6h</h3>
+    <form onsubmit="enviarWhatsApp(event)">
+      <input type="text" id="nome" class="form-control my-2" placeholder="Nome" required>
+      <input type="tel" id="telefone" class="form-control my-2" placeholder="Telefone" required>
+      <button type="submit" class="btn btn-primary w-100">Ativar Teste 6h</button>
+    </form>
+    <small>* Apenas 2 testes por número de telefone</small>
+  </div>
 
-  <!-- Planos -->
-  <section id="planos" class="section">
-    <h2>Planos de Assinatura</h2>
-    <div class="plans">
-      <div class="plan">
-        <h3>1 Mês - R$19,90</h3>
-        <img src="https://i.ibb.co/7YC2PZH/plan1.png" alt="Plano 1 mês">
-        <button class="btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine Agora</button>
-      </div>
-      <div class="plan">
-        <h3>6 Meses - R$100,00</h3>
-        <img src="https://i.ibb.co/QN0pLhn/plan6.png" alt="Plano 6 meses">
-        <button class="btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine Agora</button>
-      </div>
-      <div class="plan">
-        <h3>12
+  <!-- PLANOS -->
+  <div class="container planos">
+    <h2 class="text-center mb-4">Planos de Assinatura</h2>
+
+    <div class="banner-plano">
+      <h4>Básico</h4>
+      <p class="preco">R$ 30/mês</p>
+      <p>1 Tela • HD</p>
+      <p>Renovação automática</p>
+      <a href="https://wa.me/5544999285482" target="_blank" class="btn btn-light">Assinar</a>
+    </div>
+
+    <div class="banner-plano">
+      <h4>Padrão</h4>
+      <p class="preco">R$ 45/mês</p>
+      <p>2 Telas • Full HD</p>
+      <p>Renovação automática</p>
+      <a href="https://wa.me/5544999285482" target="_blank" class="btn btn-light">Assinar</a>
+    </div>
+
+    <div class="banner-plano">
+      <h4>Premium</h4>
+      <p class="preco">R$ 60/mês</p>
+      <p>4 Telas • Ultra HD</p>
+      <p>Renovação automática</p>
+      <a href="https://wa.me/5544999285482" target="_blank" class="btn btn-light">Assinar</a>
+    </div>
+  </div>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>© 2025 Homeplay • <a href="http://starweb.webplayer.one" class="text-danger">Assistir já</a></p>
+  </footer>
+
+  <!-- ÍCONES FLUTUANTES -->
+  <a href="https://wa.me/5544999285482" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/seutelegram" class="float-telegram" target="_blank"><i class="fab fa-telegram"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function enviarWhatsApp(e) {
+      e.preventDefault();
+      let nome = document.getElementById("nome").value;
+      let tel = document.getElementById("telefone").value;
+      let msg = `Olá, quero ativar meu *teste de 6h*.\n\nNome: ${nome}\nTelefone: ${tel}`;
+      window.open(`https://wa.me/5544999285482?text=${encodeURIComponent(msg)}`, "_blank");
+    }
+  </script>
+</body>
+</html>
