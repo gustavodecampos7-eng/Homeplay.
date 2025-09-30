@@ -1,266 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homeplay</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* pequenas customizações */
-    .card-gradient {
-      background: linear-gradient(90deg, rgba(17,17,17,1) 0%, rgba(14,14,14,1) 50%, rgba(20,20,20,1) 100%);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .accent-red { color: #ff3b30; }
-    .accent-blue { color: #0ea5e9; }
-    /* efeito leve nos ícones flutuantes */
-    .float-btn img { filter: drop-shadow(0 6px 10px rgba(0,0,0,0.6)); }
-  </style>
 </head>
-<body class="bg-black text-white antialiased">
-
-  <!-- HEADER -->
+<body class="bg-black text-white font-sans">
+  <!-- Header -->
   <header class="flex items-center justify-between p-6">
-    <div class="flex items-center gap-4">
-      <!-- logo -->
-      <div class="w-12 h-12 rounded-full bg-gradient-to-br from-red-500 to-blue-500 flex items-center justify-center">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <path d="M3 10L12 3l9 7v8a2 2 0 0 1-2 2h-2V14H7v6H5a2 2 0 0 1-2-2v-8z" fill="white"/>
-          <path d="M10 12l6-3v6l-6-3z" fill="#000"/>
+    <div class="flex items-center gap-2">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-blue-500 flex items-center justify-center">
+        <!-- Ícone Casa + Play -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 10L12 3l9 7v8a2 2 0 0 1-2 2h-2V14H7v6H5a2 2 0 0 1-2-2v-8z"/>
+          <path d="M10 12l6-3v6l-6-3z" fill="black"/>
         </svg>
       </div>
-      <div>
-        <div class="font-bold text-xl">Home<span class="accent-red">play</span></div>
-        <div class="text-xs text-gray-400">Filmes • Séries • Esportes</div>
-      </div>
+      <h1 class="text-2xl font-bold">Home<span class="text-red-500">play</span></h1>
     </div>
-
-    <div class="flex items-center gap-3">
-      <a href="http://starweb.webplayer.one" target="_blank" class="px-3 py-2 rounded bg-blue-600 text-black font-semibold">Assista já</a>
-      <a href="https://wa.me/5544999285482" target="_blank" class="px-4 py-2 rounded bg-red-600 text-black font-semibold">Assine agora</a>
-    </div>
+    <a href="https://wa.me/5544999285482" class="bg-red-600 px-4 py-2 rounded font-semibold">Assine agora</a>
   </header>
 
-  <!-- BANNER ROTATIVO -->
-  <section class="relative w-full h-72 sm:h-96 overflow-hidden">
-    <img id="heroImage" class="w-full h-full object-cover brightness-75 transition-opacity duration-700" alt="Banner" />
-    <div class="absolute left-6 bottom-8 max-w-xl">
-      <h1 class="text-3xl sm:text-4xl font-extrabold">Os melhores títulos em um só lugar</h1>
-      <p class="mt-2 text-gray-200">Filmes, séries e esportes — incluindo jogos da Champions League.</p>
-      <div class="mt-4 flex gap-3">
-        <a href="http://starweb.webplayer.one" target="_blank" class="px-4 py-2 rounded bg-blue-600 text-black font-semibold">Ir ao Player</a>
-        <a href="https://wa.me/5544999285482" target="_blank" class="px-4 py-2 rounded bg-red-600 text-black font-semibold">Assine via WhatsApp</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- LOGIN / TESTE -->
-  <main class="p-6 max-w-5xl mx-auto">
-    <section class="max-w-md mx-auto mb-10">
-      <h2 class="text-2xl font-bold mb-4">Login / Teste gratuito — 6 horas</h2>
-      <form id="loginForm" class="space-y-4 bg-neutral-900 p-4 rounded card-gradient">
-        <div>
-          <label for="nome" class="block text-sm mb-1">Nome</label>
-          <input id="nome" type="text" class="w-full p-2 rounded bg-black border border-gray-700" />
-        </div>
-        <div>
-          <label for="telefone" class="block text-sm mb-1">Telefone</label>
-          <input id="telefone" type="tel" placeholder="(44) 99928-5482" class="w-full p-2 rounded bg-black border border-gray-700" />
-          <p class="text-xs text-gray-500 mt-1">Máximo de 2 testes por número. Na 3ª tentativa você será redirecionado ao WhatsApp.</p>
-        </div>
-
-        <div class="flex gap-3">
-          <button type="submit" class="flex-1 py-2 rounded bg-blue-600 font-semibold">Ativar Teste 6h</button>
-          <button type="button" id="clearTrials" class="px-3 py-2 rounded border border-gray-700">Limpar (dev)</button>
-        </div>
-
-        <p id="loginMessage" class="text-sm mt-1"></p>
-      </form>
-    </section>
-
-    <!-- PLANOS / CARDS PROMOCIONAIS -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6">Planos de Assinatura</h2>
-      <div class="grid gap-6 sm:grid-cols-3">
-        <!-- CARD 1 - 1 MÊS -->
-        <article class="p-4 rounded-2xl card-gradient border border-gray-800 flex flex-col items-start gap-4">
-          <div class="flex items-center gap-3 w-full">
-            <div class="w-16 h-16 rounded-lg flex items-center justify-center bg-gradient-to-br from-red-600 to-blue-600">
-              <span class="text-2xl">⭐</span>
-            </div>
-            <div class="flex-1">
-              <div class="text-sm text-gray-300">Plano Básico</div>
-              <div class="text-2xl font-bold">1 Mês</div>
-              <div class="text-3xl font-extrabold mt-1">R$ 19,90</div>
-            </div>
-          </div>
-          <p class="text-xs text-gray-400">Teste seguro com renovação manual.</p>
-
-          <!-- QR PIX e botões -->
-          <div class="w-full flex items-center gap-3">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126330014br.gov.bcb.pix011110519714970520400005303986540519.905802BR5925Gustavo%20de%20Campos%20Martins6009Sao%20Paulo610901227-20062230519daqr43619587029107563044075" alt="QR 1 mês" class="w-28 h-28 rounded-md bg-white p-1" />
-            <div class="flex-1">
-              <textarea readonly class="w-full p-2 text-xs rounded bg-black border border-gray-700 text-white" rows="3">00020126330014br.gov.bcb.pix011110519714970520400005303986540519.905802BR5925Gustavo de Campos Martins6009Sao Paulo610901227-20062230519daqr43619587029107563044075</textarea>
-              <div class="mt-2 flex gap-2">
-                <a href="https://wa.me/5544999285482" target="_blank" class="px-3 py-2 rounded bg-red-600 text-black font-semibold">Assine já</a>
-                <a href="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=00020126330014br.gov.bcb.pix011110519714970520400005303986540519.905802BR5925Gustavo%20de%20Campos%20Martins6009Sao%20Paulo610901227-20062230519daqr43619587029107563044075" target="_blank" class="px-3 py-2 rounded border border-gray-700">Abrir QR</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- CARD 2 - 6 MESES -->
-        <article class="p-4 rounded-2xl card-gradient border border-gray-800 flex flex-col items-start gap-4">
-          <div class="flex items-center gap-3 w-full">
-            <div class="w-16 h-16 rounded-lg flex items-center justify-center bg-gradient-to-br from-red-600 to-blue-600">
-              <span class="text-2xl">🥈</span>
-            </div>
-            <div class="flex-1">
-              <div class="text-sm text-gray-300">Plano Plus</div>
-              <div class="text-2xl font-bold">6 Meses</div>
-              <div class="text-3xl font-extrabold mt-1">R$ 100,00</div>
-            </div>
-          </div>
-          <p class="text-xs text-gray-400">Desconto por período semestral.</p>
-
-          <!-- QR PIX e botões -->
-          <div class="w-full flex items-center gap-3">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126330014br.gov.bcb.pix0111105197149705204000053039865406100.005802BR5925Gustavo%20de%20Campos%20Martins6009Sao%20Paulo610901227-20062230519daqr43619587032790063048588" alt="QR 6 meses" class="w-28 h-28 rounded-md bg-white p-1" />
-            <div class="flex-1">
-              <textarea readonly class="w-full p-2 text-xs rounded bg-black border border-gray-700 text-white" rows="3">00020126330014br.gov.bcb.pix0111105197149705204000053039865406100.005802BR5925Gustavo de Campos Martins6009Sao Paulo610901227-20062230519daqr43619587032790063048588</textarea>
-              <div class="mt-2 flex gap-2">
-                <a href="https://wa.me/5544999285482" target="_blank" class="px-3 py-2 rounded bg-red-600 text-black font-semibold">Assine já</a>
-                <a href="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=00020126330014br.gov.bcb.pix0111105197149705204000053039865406100.005802BR5925Gustavo%20de%20Campos%20Martins6009Sao%20Paulo610901227-20062230519daqr43619587032790063048588" target="_blank" class="px-3 py-2 rounded border border-gray-700">Abrir QR</a>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- CARD 3 - 12 MESES -->
-        <article class="p-4 rounded-2xl card-gradient border border-gray-800 flex flex-col items-start gap-4">
-          <div class="flex items-center gap-3 w-full">
-            <div class="w-16 h-16 rounded-lg flex items-center justify-center bg-gradient-to-br from-red-600 to-blue-600">
-              <span class="text-2xl">👑</span>
-            </div>
-            <div class="flex-1">
-              <div class="text-sm text-gray-300">Plano Premium</div>
-              <div class="text-2xl font-bold">12 Meses</div>
-              <div class="text-3xl font-extrabold mt-1">R$ 180,00</div>
-            </div>
-          </div>
-          <p class="text-xs text-gray-400">Melhor custo-benefício — anual.</p>
-
-          <!-- QR PIX e botões -->
-          <div class="w-full flex items-center gap-3">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126330014br.gov.bcb.pix0111105197149705204000053039865406180.005802BR5925Gustavo%20de%20Campos%20Martins6009Sao%20Paulo610901227-20062230519daqr43619587038038763048584" alt="QR 12 meses" class="w-28 h-28 rounded-md bg-white p-1" />
-            <div class="flex-1">
-              <textarea readonly class="w-full p-2 text-xs rounded bg-black border border-gray-700 text-white" rows="3">00020126330014br.gov.bcb.pix0111105197149705204000053039865406180.005802BR5925Gustavo de Campos Martins6009Sao Paulo610901227-20062230519daqr43619587038038763048584</textarea>
-              <div class="mt-2 flex gap-2">
-                <a href="https://wa.me/5544999285482" target="_blank" class="px-3 py-2 rounded bg-red-600 text-black font-semibold">Assine já</a>
-                <a href="https://api.qrserver.com/v1/create-qr-code/?size=600x600&data=00020126330014br.gov.bcb.pix0111105197149705204000053039865406180.005802BR5925Gustavo%20de%20Campos%20Martins6009Sao%20Paulo610901227-20062230519daqr43619587038038763048584" target="_blank" class="px-3 py-2 rounded border border-gray-700">Abrir QR</a>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ASSISTA AQUI & LINKS -->
-    <section class="mb-16">
-      <h2 class="text-2xl font-bold mb-4">Assista aqui</h2>
-      <div class="flex flex-wrap items-center gap-4">
-        <a href="http://starweb.webplayer.one" target="_blank" class="px-4 py-2 rounded bg-blue-600 text-black font-semibold">Ir ao Player</a>
-        <a href="https://wa.me/5544999285482" target="_blank" class="px-4 py-2 rounded bg-green-600">WhatsApp (chat)</a>
-        <a href="https://t.me/5544999285482" target="_blank" class="px-4 py-2 rounded bg-blue-500">Telegram (chat)</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- ÍCONES FLUTUANTES (WhatsApp + Telegram) -->
-  <div class="fixed right-5 bottom-5 flex flex-col gap-3 z-50">
-    <a class="float-btn" href="https://wa.me/5544999285482" target="_blank" title="Whatsapp">
-      <div class="w-14 h-14 rounded-full bg-green-600 flex items-center justify-center shadow-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="whatsapp" class="w-7 h-7" />
-      </div>
-    </a>
-    <a class="float-btn" href="https://t.me/5544999285482" target="_blank" title="Telegram">
-      <div class="w-14 h-14 rounded-full bg-blue-500 flex items-center justify-center shadow-lg">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="telegram" class="w-7 h-7" />
-      </div>
-    </a>
+  <!-- Banner Rotativo -->
+  <div class="relative w-full h-64 md:h-96 overflow-hidden">
+    <img id="banner" src="https://image.tmdb.org/t/p/original/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg" 
+         class="w-full h-full object-cover transition-opacity duration-700">
   </div>
 
-  <!-- RODAPÉ -->
-  <footer class="p-6 text-center text-gray-400">
-    © <span id="year"></span> Homeplay — Contato: +55 44 99928-5482
-  </footer>
+  <!-- Login -->
+  <section class="p-6 max-w-md mx-auto">
+    <h2 class="text-xl font-bold mb-4">Login / Teste gratuito 6h</h2>
+    <form id="loginForm" class="space-y-4">
+      <div>
+        <label class="block text-sm">Nome</label>
+        <input id="nome" type="text" class="w-full p-2 rounded bg-neutral-900 border border-gray-700">
+      </div>
+      <div>
+        <label class="block text-sm">Telefone</label>
+        <input id="telefone" type="text" placeholder="(44) 99928-5482" class="w-full p-2 rounded bg-neutral-900 border border-gray-700">
+      </div>
+      <button type="submit" class="w-full bg-blue-600 py-2 rounded font-semibold">Ativar Teste 6h</button>
+      <p id="msg" class="text-sm mt-2"></p>
+    </form>
+  </section>
 
-  <!-- SCRIPTS -->
-  <script>
-    // ano no rodapé
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // HERO IMAGENS (filme, série, champions) - você pode trocar por outras imagens
-    const heroImgs = [
-      'https://i.imgur.com/6Iej2c3.jpg', // exemplo: filme
-      'https://i.imgur.com/N4QJ8VE.jpg', // exemplo: série
-      'https://i.imgur.com/u5LQhzG.jpg'  // exemplo: esportes (Champions)
-    ];
-    let heroIdx = 0;
-    const heroEl = document.getElementById('heroImage');
-    heroEl.src = heroImgs[0];
-    setInterval(() => {
-      heroIdx = (heroIdx + 1) % heroImgs.length;
-      heroEl.src = heroImgs[heroIdx];
-    }, 3000);
-
-    /* ---------- Login / Teste 6 horas (limite 2 por telefone) ---------- 
-       Estrutura localStorage:
-         key: "homeplay_trials_<telefone>" -> { count: n, expiry: timestamp }
-       - Ao ativar teste:
-         - Se count < 2: salvar count+1 e expiry = now + 6h
-         - Se count >=2: redirecionar para WhatsApp
-    --------------------------------------------------------------- */
-
-    function normalizePhone(v) {
-      return (v || '').replace(/\D/g, '');
-    }
-
-    function getTrialData(phone) {
-      if (!phone) return {count: 0, expiry: 0};
-      try {
-        const raw = localStorage.getItem('homeplay_trials_' + phone);
-        return raw ? JSON.parse(raw) : {count: 0, expiry: 0};
-      } catch (e) {
-        return {count: 0, expiry: 0};
-      }
-    }
-    function setTrialData(phone, data) {
-      localStorage.setItem('homeplay_trials_' + phone, JSON.stringify(data));
-    }
-
-    // On submit
-    const loginForm = document.getElementById('loginForm');
-    const loginMessage = document.getElementById('loginMessage');
-    loginForm.addEventListener('submit', (ev) => {
-      ev.preventDefault();
-      const nome = document.getElementById('nome').value.trim();
-      const telefoneRaw = document.getElementById('telefone').value;
-      const telefone = normalizePhone(telefoneRaw);
-
-      if (!nome || !telefone) {
-        loginMessage.textContent = 'Preencha nome e telefone.';
-        loginMessage.className = 'text-red-400';
-        return;
-      }
-
-      const data = getTrialData(telefone);
-      // limpa trial expirado automaticamente
-      const now = Date.now();
-      if (data.expiry && data.expiry < now) {
-        data.count = 0;
-        data.expiry = 0;
-      }
-
-      if (data.count >= 2) {
-        // Já usou 2 testes
+  <!-- Planos -->
+  <section class="p-6">
+    <h2 class="text-xl font-bold
