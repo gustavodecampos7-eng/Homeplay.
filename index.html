@@ -3,228 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homeplay - Filmes, Séries e Esportes</title>
+  <title>Homeplay</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       font-family: Arial, sans-serif;
-      background: url('https://i.ibb.co/j4RmmhV/movie-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
+    }
+    body {
       color: #fff;
+      text-align: center;
+      background: #000;
+      overflow-x: hidden;
     }
+
+    /* Fundo rotativo */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      animation: slideShow 30s infinite;
+    }
+    @keyframes slideShow {
+      0%, 25% {
+        background-image: url('https://image.tmdb.org/t/p/original/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg');
+      }
+      26%, 50% {
+        background-image: url('https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg');
+      }
+      51%, 75% {
+        background-image: url('https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg');
+      }
+      76%, 100% {
+        background-image: url('https://image.tmdb.org/t/p/original/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg');
+      }
+    }
+
+    /* Cabeçalho */
     header {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 10px 20px;
-    }
-    header .logo {
-      display: flex;
       align-items: center;
-      font-size: 22px;
-      font-weight: bold;
-      color: white;
     }
-    header .logo span { color: red; }
-    header nav a {
+    header h1 {
+      font-size: 26px;
+      font-weight: bold;
+      color: red;
+      text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+    }
+    header h1 span {
+      color: blue;
+    }
+    header nav button {
       margin-left: 10px;
-      padding: 8px 15px;
-      text-decoration: none;
-      border-radius: 6px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 5px;
       font-weight: bold;
+      cursor: pointer;
     }
-    .btn-watch { background: white; color: black; }
-    .btn-subscribe { background: red; color: white; }
+    .watch-btn { background: #fff; color: #000; }
+    .subscribe-btn { background: red; color: #fff; }
 
-    /* Banner rotativo */
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: 250px;
-    }
-    .carousel img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      display: none;
-    }
-    .carousel img.active { display: block; }
-
-    /* Seção teste */
-    .teste {
+    /* Formulário de teste */
+    .login {
       background: rgba(0, 0, 0, 0.8);
       padding: 20px;
-      text-align: center;
+      margin: 20px;
+      border-radius: 10px;
     }
-    .teste h2 { margin-bottom: 15px; }
-    .teste input {
+    .login h2 { margin-bottom: 15px; }
+    .login input {
+      display: block;
       width: 90%;
+      margin: 10px auto;
       padding: 10px;
-      margin: 5px 0;
-      border-radius: 6px;
       border: none;
+      border-radius: 5px;
     }
-    .teste button {
-      background: #007bff;
-      color: white;
+    .login button {
+      background: blue;
+      color: #fff;
+      padding: 12px 25px;
       border: none;
-      padding: 12px;
-      width: 90%;
-      border-radius: 6px;
-      font-size: 16px;
+      border-radius: 5px;
       cursor: pointer;
     }
 
     /* Planos */
-    .planos {
+    .plans {
       padding: 20px;
     }
-    .planos h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .plano {
-      background: rgba(0, 0, 0, 0.85);
+    .plan {
+      background: rgba(0,0,0,0.85);
       margin: 15px auto;
       padding: 20px;
-      border-radius: 12px;
-      max-width: 400px;
-      text-align: center;
+      border-radius: 10px;
+      max-width: 350px;
     }
-    .plano h3 { margin-bottom: 10px; }
-    .plano .preco {
-      font-size: 26px;
-      font-weight: bold;
-      margin: 10px 0;
+    .plan h3 { margin-bottom: 10px; }
+    .plan button {
+      margin: 8px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
     }
-    .plano p { margin-bottom: 15px; }
-    .plano .botoes {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 10px;
-    }
-    .plano .botoes a {
-      padding: 10px;
-      text-decoration: none;
-      border-radius: 6px;
-      border: 1px solid #fff;
-      color: #fff;
-      font-size: 14px;
-      flex: 1;
-      margin: 0 5px;
-    }
-    .plano .botoes a:first-child { background: white; color: black; }
-    .plano img.qr {
-      margin-top: 10px;
-      width: 120px;
-      height: 120px;
-    }
+    .pay-btn { background: white; color: black; }
+    .whatsapp-btn { background: green; color: white; }
 
-    /* Ícones flutuantes */
-    .float-icons {
+    /* Botões flutuantes */
+    .floating {
       position: fixed;
       bottom: 20px;
       right: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      z-index: 999;
     }
-    .float-icons a {
+    .floating a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 55px;
       height: 55px;
       border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 24px;
-      text-decoration: none;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     }
-    .whatsapp { background: #25d366; }
-    .telegram { background: #0088cc; }
+    .floating a img {
+      width: 30px;
+      height: 30px;
+    }
   </style>
 </head>
 <body>
-  <!-- Cabeçalho -->
   <header>
-    <div class="logo">🏠Home<span>play</span></div>
+    <h1>Home<span>play</span></h1>
     <nav>
-      <a href="#" class="btn-watch">Assista agora</a>
-      <a href="#" class="btn-subscribe">Assine já</a>
+      <button class="watch-btn">Assista agora</button>
+      <button class="subscribe-btn">Assine já</button>
     </nav>
   </header>
 
-  <!-- Banner rotativo -->
-  <div class="carousel">
-    <img src="https://i.ibb.co/4pMqkqs/tomjerry.jpg" class="active" alt="Tom e Jerry">
-    <img src="https://i.ibb.co/0mLfZ2w/avengers.jpg" alt="Avengers">
-    <img src="https://i.ibb.co/3vNRhVN/johnwick.jpg" alt="John Wick">
-  </div>
-
-  <!-- Teste grátis -->
-  <section class="teste">
-    <h2>Login / Teste gratuito — <strong>6 horas</strong></h2>
-    <input type="text" placeholder="Nome completo">
-    <input type="text" placeholder="(44) 99928-5482">
-    <button>Ativar Teste 6h</button>
-    <p style="margin-top:10px; font-size:13px; color:#bbb;">Máximo de 2 testes por cliente</p>
+  <!-- Login / Teste -->
+  <section class="login">
+    <h2>Login / Teste gratuito — 6 horas</h2>
+    <input type="text" id="nome" placeholder="Nome completo" required>
+    <input type="tel" id="telefone" placeholder="(44) 99928-5482" required>
+    <button onclick="ativarTeste()">Ativar Teste 6h</button>
+    <p id="mensagem" style="margin-top:10px;color:yellow;"></p>
+    <p style="margin-top:5px;color:#bbb;font-size:13px;">Máximo de 2 testes por cliente</p>
   </section>
 
   <!-- Planos -->
-  <section class="planos">
+  <section class="plans">
     <h2>Planos de Assinatura / Renovação</h2>
 
-    <div class="plano">
+    <div class="plan">
       <h3>Plano Mensal</h3>
-      <div class="preco">R$ 19,90</div>
+      <p><strong>R$ 19,90</strong></p>
       <p>1 mês • Renovação manual/automática</p>
-      <div class="botoes">
-        <a href="https://mpago.la/25CCQgV" target="_blank">Pagar (MercadoPago)</a>
-        <a href="https://wa.me/5544999285482" target="_blank">Assine já (WhatsApp)</a>
-      </div>
-      <img class="qr" src="https://i.ibb.co/0ZLwK8x/qrmensal.png" alt="QR Mensal">
+      <button class="pay-btn" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar (MercadoPago)</button>
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
     </div>
 
-    <div class="plano">
+    <div class="plan">
       <h3>Plano Semestral</h3>
-      <div class="preco">R$ 100,00</div>
+      <p><strong>R$ 100,00</strong></p>
       <p>6 meses • Renovação automática</p>
-      <div class="botoes">
-        <a href="https://mpago.la/2HKEXeN" target="_blank">Pagar (MercadoPago)</a>
-        <a href="https://wa.me/5544999285482" target="_blank">Assine já (WhatsApp)</a>
-      </div>
-      <img class="qr" src="https://i.ibb.co/DzQGLHk/qrsemestral.png" alt="QR Semestral">
+      <button class="pay-btn" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar (MercadoPago)</button>
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
     </div>
 
-    <div class="plano">
+    <div class="plan">
       <h3>Plano Anual</h3>
-      <div class="preco">R$ 180,00</div>
+      <p><strong>R$ 180,00</strong></p>
       <p>12 meses • Renovação automática</p>
-      <div class="botoes">
-        <a href="https://mpago.la/1zaQU6s" target="_blank">Pagar (MercadoPago)</a>
-        <a href="https://wa.me/5544999285482" target="_blank">Assine já (WhatsApp)</a>
-      </div>
-      <img class="qr" src="https://i.ibb.co/5M9y8DJ/qranual.png" alt="QR Anual">
+      <button class="pay-btn" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar (MercadoPago)</button>
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
     </div>
   </section>
 
-  <!-- Ícones flutuantes -->
-  <div class="float-icons">
-    <a href="https://wa.me/5544999285482" class="whatsapp">📱</a>
-    <a href="https://t.me/seucanal" class="telegram">✈️</a>
+  <!-- Botões Flutuantes -->
+  <div class="floating">
+    <a href="https://wa.me/5544999285482" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+    <a href="https://t.me/seuTelegram" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
   </div>
 
   <script>
-    // Script rotativo do banner
-    let index = 0;
-    const imagens = document.querySelectorAll('.carousel img');
-    setInterval(() => {
-      imagens[index].classList.remove('active');
-      index = (index + 1) % imagens.length;
-      imagens[index].classList.add('active');
-    }, 4000);
+    function ativarTeste() {
+      const telefone = document.getElementById("telefone").value.trim();
+      const msg = document.getElementById("mensagem");
+
+      if (!telefone) {
+        msg.innerText = "Por favor, insira seu telefone.";
+        return;
+      }
+
+      let testes = localStorage.getItem("teste_" + telefone) || 0;
+      testes = parseInt(testes);
+
+      if (testes >= 2) {
+        msg.innerText = "Você já usou os 2 testes disponíveis.";
+      } else {
+        testes++;
+        localStorage.setItem("teste_" + telefone, testes);
+        msg.innerText = "Teste ativado com sucesso! (" + testes + "/2)";
+      }
+    }
   </script>
 </body>
 </html>
