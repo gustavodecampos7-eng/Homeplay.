@@ -1,126 +1,75 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homeplay TV</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-        }
-
-        header img {
-            max-width: 180px;
-            margin: 20px auto;
-        }
-
-        .banners img {
-            width: 100%;
-            max-width: 350px;
-            border-radius: 12px;
-            margin: 10px auto;
-            display: block;
-        }
-
-        h1 {
-            margin: 20px 0;
-            font-size: 1.8rem;
-        }
-
-        .planos {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .plano {
-            background-color: #111;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-        }
-
-        .plano h2 {
-            margin-bottom: 10px;
-            color: #1e90ff;
-        }
-
-        .plano img {
-            max-width: 180px;
-            margin-top: 10px;
-        }
-
-        .contato {
-            margin: 30px 0;
-        }
-
-        .contato h2 {
-            margin-bottom: 15px;
-        }
-
-        .contato img {
-            width: 50px;
-            margin: 0 10px;
-            vertical-align: middle;
-        }
-
-        footer {
-            margin-top: 30px;
-            padding: 15px;
-            background: #111;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 1.5rem;
-            }
-            .plano img {
-                max-width: 140px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homeplay TV</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- Logo -->
-    <header>
-        <img src="assets/logo.png" alt="Logo Homeplay TV">
-    </header>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <img src="assets/logo.png" alt="Logo Homeplay TV" class="logo">
+    <a href="#planos" class="btn-assine">ASSINE AGORA</a>
+  </header>
 
-    <!-- Banners -->
-    <section class="banners">
-        <img src="assets/banner1.jpg" alt="Banner 1">
-        <img src="assets/banner2.jpg" alt="Banner 2">
-        <img src="assets/banner3.jpg" alt="Banner 3">
-    </section>
+  <!-- Banner principal -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Homeplay TV</h1>
+      <p>Planos a partir de <strong>R$22,90/mês</strong></p>
+      <a href="#planos" class="btn-assine">ASSINE AGORA</a>
+    </div>
+    <div class="hero-banners">
+      <img src="assets/banner1.jpg" alt="Banner 1">
+      <img src="assets/banner2.jpg" alt="Banner 2">
+      <img src="assets/banner3.jpg" alt="Banner 3">
+    </div>
+  </section>
 
-    <!-- Planos -->
-    <h1>Escolha seu plano</h1>
-    <section class="planos">
-        <div class="plano">
-            <h2>Mensal</h2>
-            <img src="assets/qr_mensal.png" alt="QR Code Mensal">
-        </div>
-        <div class="plano">
-            <h2>Semestral</h2>
-            <img src="assets/qr_semestral.png" alt="QR Code Semestral">
-        </div>
-        <div class="plano">
-            <h2>Anual</h2>
-            <img src="assets/qr_anual.png" alt="QR Code Anual">
-        </div>
-    </section>
+  <!-- Planos -->
+  <section id="planos" class="planos">
+    <h2>Escolha seu plano</h2>
+    <div class="planos-container">
 
-    <!-- Contato -->
-    <section class="contato">
-        <h2>Fale Conosco</h2>
-        <a href="https://wa.me/SEUNUMERO" target="_blank">
-            <img src="assets/whatsapp.png" alt="WhatsApp">
-        </a>
+      <div class="plano">
+        <h3>Mensal</h3>
+        <img src="assets/qr_mensal.png" alt="QR Code Mensal">
+      </div>
+
+      <div class="plano">
+        <h3>Semestral</h3>
+        <img src="assets/qr_semestral.png" alt="QR Code Semestral">
+      </div>
+
+      <div class="plano">
+        <h3>Anual</h3>
+        <img src="assets/qr_anual.png" alt="QR Code Anual">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section id="contato" class="contato">
+    <h2>Fale Conosco</h2>
+    <div class="contato-links">
+      <a href="https://wa.me/seunumerowhatsapp" target="_blank">
+        <img src="assets/whatsapp.png" alt="WhatsApp">
+        WhatsApp
+      </a>
+      <a href="https://t.me/seutelegram" target="_blank">
+        <img src="assets/telegram.png" alt="Telegram">
+        Telegram
+      </a>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>Obrigado por assistir!</p>
+  </footer>
+
+</body>
+</html>
