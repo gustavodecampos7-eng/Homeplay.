@@ -6,69 +6,29 @@
   <title>Homeplay</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-white">
-
-  <!-- Cabeçalho -->
+<body class="bg-black text-white font-sans">
+  <!-- Header -->
   <header class="flex items-center justify-between p-6">
-    <h1 class="text-2xl font-bold text-red-500">Home<span class="text-blue-500">play</span></h1>
-    <a href="https://wa.me/5544999285482" class="bg-red-600 px-4 py-2 rounded">Assine já</a>
+    <div class="flex items-center gap-2">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-blue-500 flex items-center justify-center">
+        <!-- Ícone Casa + Play -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 10L12 3l9 7v8a2 2 0 0 1-2 2h-2V14H7v6H5a2 2 0 0 1-2-2v-8z"/>
+          <path d="M10 12l6-3v6l-6-3z" fill="black"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-bold">Home<span class="text-red-500">play</span></h1>
+    </div>
+    <a href="https://wa.me/5544999285482" class="bg-red-600 px-4 py-2 rounded font-semibold">Assine agora</a>
   </header>
 
-  <!-- Banner rotativo simples -->
+  <!-- Banner Rotativo -->
   <div class="relative w-full h-64 overflow-hidden">
-    <img id="banner" src="https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=1600&q=80" 
+    <img id="banner" src="https://i.imgur.com/6Iej2c3.jpg" 
          class="w-full h-full object-cover transition-opacity duration-700">
   </div>
 
-  <!-- Planos -->
-  <section class="p-6">
-    <h2 class="text-xl font-bold mb-4">Planos</h2>
-    <div class="grid gap-6 sm:grid-cols-3">
-      <div class="bg-neutral-900 p-4 rounded">
-        <h3>1 mês</h3>
-        <p>R$ 19,90</p>
-        <a href="https://wa.me/5544999285482" class="mt-2 inline-block bg-red-600 px-3 py-1 rounded">Assine</a>
-      </div>
-      <div class="bg-neutral-900 p-4 rounded">
-        <h3>6 meses</h3>
-        <p>R$ 100,00</p>
-        <a href="https://wa.me/5544999285482" class="mt-2 inline-block bg-red-600 px-3 py-1 rounded">Assine</a>
-      </div>
-      <div class="bg-neutral-900 p-4 rounded">
-        <h3>12 meses</h3>
-        <p>R$ 180,00</p>
-        <a href="https://wa.me/5544999285482" class="mt-2 inline-block bg-red-600 px-3 py-1 rounded">Assine</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Assista aqui -->
-  <section class="p-6">
-    <h2 class="text-xl font-bold mb-4">Assista aqui</h2>
-    <div class="flex gap-4">
-      <a href="#" class="bg-red-600 p-4 rounded">Filmes</a>
-      <a href="#" class="bg-blue-600 p-4 rounded">Séries</a>
-      <a href="#" class="bg-red-600 p-4 rounded">Esportes</a>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="p-6 text-center text-gray-400">
-    © 2025 Homeplay
-  </footer>
-
-  <!-- Script para banner rotativo -->
-  <script>
-    const imagens = [
-      "https://images.unsplash.com/photo-1517602302552-471fe67acf66?w=1600&q=80",
-      "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=1600&q=80",
-      "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=1600&q=80"
-    ];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % imagens.length;
-      document.getElementById("banner").src = imagens[idx];
-    }, 3000);
-  </script>
-</body>
-  </html>
+  <!-- Login -->
+  <section class="p-6 max-w-md mx-auto">
+    <h2 class="text-xl font-bold mb-4">Login / Teste gratuito 6h</h2>
+    <form id="login
