@@ -15,17 +15,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
     header h1 {
-      font-size: 28px;
+      font-size: 26px;
       font-weight: bold;
       color: red;
       text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
     }
     header h1 span { color: blue; }
-    header nav { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     header nav button {
+      margin-left: 10px;
       padding: 8px 16px;
       border: none;
       border-radius: 5px;
@@ -36,34 +35,33 @@
     .subscribe-btn { background: red; color: #fff; }
 
     /* Banner rotativo */
-    .banner { width: 100%; max-height: 250px; overflow: hidden; position: relative; }
-    .banner .slides { display: flex; width: 400%; animation: slide 20s infinite; }
+    .banner { width: 100%; max-height: 320px; overflow: hidden; position: relative; }
+    .banner .slides { display: flex; animation: slide 15s infinite; }
     .banner img {
       width: 100%;
-      height: 250px;
-      object-fit: contain; /* mantém proporção sem cortar */
-      background: #000;    /* fundo preto para evitar bordas brancas */
+      height: 320px;
+      object-fit: cover;
       flex-shrink: 0;
     }
     @keyframes slide {
-      0%, 20% { transform: translateX(0); }
-      25%, 45% { transform: translateX(-100%); }
-      50%, 70% { transform: translateX(-200%); }
-      75%, 100% { transform: translateX(-300%); }
+      0%, 30%   { transform: translateX(0); }
+      33%, 63%  { transform: translateX(-100%); }
+      66%, 96%  { transform: translateX(-200%); }
+      100%      { transform: translateX(0); }
     }
 
-    /* Login / Teste */
+    /* Login */
     .login {
-      background: rgba(0,0,0,0.85);
+      background: rgba(0, 0, 0, 0.7);
       padding: 20px;
-      margin: 20px auto;
+      margin: 20px;
       border-radius: 10px;
-      max-width: 500px;
     }
     .login input {
+      display: block;
       width: 90%;
       margin: 10px auto;
-      padding: 12px;
+      padding: 10px;
       border: none;
       border-radius: 5px;
     }
@@ -80,30 +78,34 @@
     .plans { padding: 20px; }
     .plans h2 { margin-bottom: 15px; }
     .plan {
+      background: rgba(255,255,255,0.08);
       margin: 15px auto;
       padding: 20px;
-      border-radius: 10px;
-      max-width: 350px;
-      color: #fff;
+      border-radius: 12px;
+      max-width: 360px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
     }
     .plan h3 { margin-bottom: 10px; font-size: 20px; }
     .plan p { margin: 5px 0; }
     .plan button {
-      margin: 8px;
-      padding: 10px 20px;
+      display: block;
+      width: 90%;
+      margin: 8px auto;
+      padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
     }
-    .pay-btn { background: rgba(255,255,255,0.9); color: black; }
-    .whatsapp-btn { background: rgba(0,128,0,0.85); color: white; }
-    .plan img { width: 120px; margin-top: 10px; }
-
-    /* Cores suaves */
-    .mensal { background: linear-gradient(135deg, rgba(255,0,0,0.7), rgba(139,0,0,0.7)); }
-    .semestral { background: linear-gradient(135deg, rgba(0,0,255,0.7), rgba(0,0,139,0.7)); }
-    .anual { background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(30,30,30,0.85)); border: 1px solid rgba(255,0,0,0.6); }
+    .whatsapp-btn { background: red; color: #fff; }
+    .pay-btn { background: rgba(255,255,255,0.9); color: #000; }
+    .qrcode {
+      margin-top: 10px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .qrcode img { width: 120px; }
 
     /* Botões flutuantes */
     .floating {
@@ -115,20 +117,18 @@
       gap: 10px;
     }
     .floating a img {
-      width: 50px;
-      height: 50px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
     }
 
     /* Responsividade */
     @media (max-width: 768px) {
-      header { flex-direction: column; text-align: center; }
-      .banner { max-height: 180px; }
-      .banner img { height: 180px; }
-      .login, .plan { width: 95%; }
-      .floating { right: 10px; bottom: 10px; }
-      .floating a img { width: 45px; height: 45px; }
+      header { flex-direction: column; }
+      .banner { max-height: 220px; }
+      .banner img { height: 220px; }
+      .plan { max-width: 90%; }
     }
   </style>
 </head>
@@ -141,54 +141,50 @@
     </nav>
   </header>
 
-  <!-- Banner rotativo -->
+  <!-- Banner Rotativo -->
   <div class="banner">
     <div class="slides">
-      <img src="https://image.tmdb.org/t/p/w780/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg" alt="Banner 1">
-      <img src="https://image.tmdb.org/t/p/w780/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Banner 2">
-      <img src="https://image.tmdb.org/t/p/w780/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg" alt="Banner 3">
-      <img src="https://image.tmdb.org/t/p/w780/cSYLX73WskxCgvpN3MtRkYUSj1T.jpg" alt="Banner 4">
+      <img src="https://image.tmdb.org/t/p/original/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg" alt="Banner 1">
+      <img src="https://image.tmdb.org/t/p/original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg" alt="Banner 2">
+      <img src="https://image.tmdb.org/t/p/original/5YZbUmjbMa3ClvSW1Wj3D6XGolb.jpg" alt="Banner 3">
     </div>
   </div>
 
-  <!-- Login / Teste -->
+  <!-- Login -->
   <section class="login">
-    <h2>Login / Teste gratuito — 6 horas</h2>
+    <h2>Teste gratuito — 6 horas</h2>
     <input type="text" id="nome" placeholder="Nome completo" required>
     <input type="tel" id="telefone" placeholder="(44) 99928-5482" required>
-    <button onclick="ativarTeste()">Ativar Teste 6h</button>
+    <button onclick="ativarTeste()">Ativar Teste</button>
     <p id="mensagem" style="margin-top:10px;color:yellow;"></p>
   </section>
 
   <!-- Planos -->
   <section class="plans">
-    <h2>Planos de Assinatura / Renovação</h2>
+    <h2>Planos de Assinatura</h2>
 
-    <div class="plan mensal">
+    <div class="plan">
       <h3>Plano Mensal</h3>
       <p><strong>R$ 19,90</strong></p>
-      <p>1 mês • Renovação manual/automática</p>
-      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
-      <button class="pay-btn" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar (MercadoPago)</button>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/25CCQgV" alt="QR Mensal">
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
+      <button class="pay-btn" onclick="window.open('https://mpago.la/25CCQgV','_blank')">Pagar com MercadoPago</button>
+      <div class="qrcode"><img src="https://i.ibb.co/0jFJ0mS/qrcode1.png" alt="QR Code Mensal"></div>
     </div>
 
-    <div class="plan semestral">
+    <div class="plan">
       <h3>Plano Semestral</h3>
       <p><strong>R$ 100,00</strong></p>
-      <p>6 meses • Renovação automática</p>
-      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
-      <button class="pay-btn" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar (MercadoPago)</button>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/2HKEXeN" alt="QR Semestral">
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
+      <button class="pay-btn" onclick="window.open('https://mpago.la/2HKEXeN','_blank')">Pagar com MercadoPago</button>
+      <div class="qrcode"><img src="https://i.ibb.co/mz7QCy6/qrcode2.png" alt="QR Code 6 meses"></div>
     </div>
 
-    <div class="plan anual">
+    <div class="plan">
       <h3>Plano Anual</h3>
       <p><strong>R$ 180,00</strong></p>
-      <p>12 meses • Renovação automática</p>
-      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já</button>
-      <button class="pay-btn" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar (MercadoPago)</button>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mpago.la/1zaQU6s" alt="QR Anual">
+      <button class="whatsapp-btn" onclick="window.open('https://wa.me/5544999285482','_blank')">Assine já (WhatsApp)</button>
+      <button class="pay-btn" onclick="window.open('https://mpago.la/1zaQU6s','_blank')">Pagar com MercadoPago</button>
+      <div class="qrcode"><img src="https://i.ibb.co/5FK2V5H/qrcode3.png" alt="QR Code 12 meses"></div>
     </div>
   </section>
 
@@ -197,18 +193,14 @@
     <a href="https://wa.me/5544999285482" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     </a>
-    <a href="https://t.me/homeplaytv" target="_blank">
+    <a href="https://t.me/seuTelegram" target="_blank">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
     </a>
   </div>
 
   <script>
     function ativarTeste() {
-      const telefone = document.getElementById("telefone").value.trim();
-      if (!telefone) {
-        document.getElementById("mensagem").innerText = "Digite um número válido.";
-        return;
-      }
+      const telefone = document.getElementById("telefone").value;
       let testes = localStorage.getItem(telefone) || 0;
       testes = parseInt(testes);
       if (testes >= 2) {
